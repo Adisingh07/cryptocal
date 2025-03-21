@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Prices | Adityav </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery for API calls -->
+</head>
+<body>
+    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="/live-prices.html">Live Prices</a></li>
+            <li><a href="/pi/portfolio.html">Portfolio</a></li>
+            <li><a href="/pi/transactions.html">Transactions</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Live Cryptocurrency Prices</h2>
+    
+        <div class="toggle-container">
+            <label>
+                <input type="radio" name="update-mode" value="auto" checked onchange="toggleUpdateMode()"> Auto Update
+            </label>
+            <label>
+                <input type="radio" name="update-mode" value="manual" onchange="toggleUpdateMode()"> Manual Update
+            </label>
+        </div>
+    
+        <button id="refresh-prices" onclick="fetchPrices()" style="display: none;">Refresh Prices</button>
+    
+        <div class="price-box">
+            <p><strong>Pi Network (PI):</strong> <span id="pi-price">Loading...</span></p>
+            <p><strong>Bitcoin (BTC):</strong> <span id="btc-price">Loading...</span></p>
+            <p><strong>Ethereum (ETH):</strong> <span id="eth-price">Loading...</span></p>
+            <p><strong>Litecoin (LTC):</strong> <span id="ltc-price">Loading...</span></p>
+            <p><strong>Dogecoin (DOGE):</strong> <span id="doge-price">Loading...</span></p>
+        </div>
+    </div>
+    
+    </div>
+
+    <footer>
+        <p>© 2025 Adityav  | <a href="/privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            let sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+    </script>
+    <script src="/scripts.js"></script>
+
+</body>
+</html>

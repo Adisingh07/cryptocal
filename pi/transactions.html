@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions | Adityav </title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script> <!-- Pi SDK -->
+</head>
+<body>
+    <div>
+        <h1> PI SDK NOT INTRIGATE THIS IS DEMO PAGE </h1>
+    </div>
+    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/live-prices.html">Live Prices</a></li>
+            <li><a href="/pi/portfolio.html">Portfolio</a></li>
+            <li><a href="/pi/transactions.html">Transactions</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+        </ul>
+    </div>
+    
+
+
+    <div class="container">
+        <h2>Pi Transactions</h2>
+
+        <!-- Send Pi Section -->
+        <h3>Send Pi</h3>
+        <label for="recipient">Recipient Username:</label>
+        <input type="text" id="recipient" placeholder="Enter username">
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount in Pi">
+
+        <button id="send-pi">Send Pi</button>
+
+        <!-- Transaction History -->
+        <h3>Transaction History</h3>
+        <button id="check-transactions">Check Transactions</button>
+        <ul id="transactions">
+            <li>Loading...</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>© 2025 Adityav | <a href="/privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        // Send Pi Payment
+        async function sendPiTransaction() {
+            try {
+                const recipient = document.getElementById("recipient").value;
+                const amount = parseFloat(document.getElementById("amount").value);
+
+                if (!recipient || amount <= 0) {
+                    alert("Enter a valid recipient and amount.");
+                    return;
+                }
+
+                const payment = await Pi.createPayment({
+                    amount: amount,
+                    memo: `Payment to ${recipient}`,
+                    metadata: { recipient: recipient },
+                });
+
+                console.log("Transaction Created:", payment);
+                alert("Transaction initiated! Complete it in the Pi app.");
+            } catch (error) {
+                console.error("Transaction failed:", error);
+            }
+        }
+
+        document.getElementById("send-pi").addEventListener("click", sendPiTransaction);
+
+        // Fetch Transaction History
+        async function getTransactionHistory() {
+            try {
+                const transactions = [
+                    { id: 1, amount: 2.5, status: "Completed" },
+                    { id: 2, amount: 1.0, status: "Pending" }
+                ]; // Replace this with an actual API call
+
+                let transactionList = document.getElementById("transactions");
+                transactionList.innerHTML = "";
+                transactions.forEach(tx => {
+                    transactionList.innerHTML += `<li>Tx ${tx.id}: ${tx.amount} π - ${tx.status}</li>`;
+                });
+            } catch (error) {
+                console.error("Error fetching transactions:", error);
+            }
+        }
+
+        document.getElementById("check-transactions").addEventListener("click", getTransactionHistory);
+    </script>
+        <script>
+            function toggleSidebar() {
+                let sidebar = document.getElementById("sidebar");
+                sidebar.classList.toggle("open");
+            }
+        </script>
+    <script src="script.js"></script>
+</body>
+</html>

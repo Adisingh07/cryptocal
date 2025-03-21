@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Adityav </title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script> <!-- Pi SDK -->
+</head>
+<body>
+    <div>
+        <h1> PI SDK NOT INTRIGATE THIS IS DEMO PAGE </h1>
+    </div>
+    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/live-prices.html">Live Prices</a></li>
+            <li><a href="/pi/portfolio.html">Portfolio</a></li>
+            <li><a href="/pi/transactions.html">Transactions</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+        </ul>
+    </div>
+    
+
+    <div class="container">
+        <h2>Your Portfolio</h2>
+
+        <!-- Pi Balance Section -->
+        <button id="check-balance">Check Pi Balance</button>
+        <p id="pi-balance">Pi Balance: --</p>
+
+        <!-- Other Crypto Holdings -->
+        <h3>Other Crypto Holdings</h3>
+        <ul>
+            <li>Bitcoin (BTC): <span id="btc-balance">0.002 BTC</span></li>
+            <li>Ethereum (ETH): <span id="eth-balance">0.05 ETH</span></li>
+            <li>Litecoin (LTC): <span id="ltc-balance">1.2 LTC</span></li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>© 2025 Adityav | <a href="/privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        async function getPiBalance() {
+            try {
+                // Simulated balance (Replace with actual API call)
+                const balance = 10.5; // Fetch from Pi Network API
+                document.getElementById("pi-balance").innerText = `Pi Balance: ${balance} π`;
+            } catch (error) {
+                console.error("Error fetching Pi balance:", error);
+            }
+        }
+
+        document.getElementById("check-balance").addEventListener("click", getPiBalance);
+    </script>
+        <script>
+            function toggleSidebar() {
+                let sidebar = document.getElementById("sidebar");
+                sidebar.classList.toggle("open");
+            }
+        </script>
+    <script src="script.js"></script>
+</body>
+</html>
